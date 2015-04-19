@@ -7,3 +7,5 @@ C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\bin\Debug\Notif
 C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\obj\Debug\NotifyIconMealPlanner.exe
 C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\obj\Debug\NotifyIconMealPlanner.pdb
 C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\bin\Debug\apple.ico
+C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\bin\Debug\MealPlanner.Library.dll
+C:\Users\Clay\Documents\GitHub\MealPlanner\NotifyIconMealPlanner\bin\Debug\MealPlanner.Library.pdb

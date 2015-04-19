@@ -37,7 +37,7 @@ namespace MealPlannerEngine
 
 			// Set up a timer to trigger every hour.
 			_updateTimer = new Timer();
-			_updateTimer.Interval = 60000 * 60; // 60 seconds * 60 minutes
+			_updateTimer.Interval = 60000 ;//* 60; // 60 seconds * 60 minutes
 			_updateTimer.Elapsed += new ElapsedEventHandler( this.OnTimer );
 			_updateTimer.Start();
 
@@ -78,7 +78,7 @@ namespace MealPlannerEngine
 
 			if ( !IsPlanSufficient( mealPlan ) )
 			{
-				System.Diagnostics.Process.Start( "http://localhost:17575/" );
+				new NotifyIconServiceChannel().SendMealPlanDaysNeeded( 3 );
 			}
 		}
 

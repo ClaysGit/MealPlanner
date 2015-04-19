@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="MealPlannerEngine.exe.manifest" size="4166">
+    <dependentAssembly dependencyType="install" codebase="MealPlannerEngine.exe.manifest" size="4167">
       <assemblyIdentity name="MealPlannerEngine.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0B/SQnbJ5rlEhsXICz5LlGiSIiHGRL2sniKj5ynlK+c=</dsig:DigestValue>
+        <dsig:DigestValue>VsVyktBrZfcMdlQRGU4S529eMXl7PEkDeAgpLmNvPcg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

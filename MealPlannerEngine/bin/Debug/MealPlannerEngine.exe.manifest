@@ -49,19 +49,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iwuDYj+vP5KpyR8sq5cX38YU0dOXUpYbBxSIeh4kK6Q=</dsig:DigestValue>
+        <dsig:DigestValue>Ok3e7fLPC7/47+6DD9YALXvpbSDjY5+FjnahbpmaoAM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlannerEngine.exe" size="9728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlannerEngine.exe" size="10240">
       <assemblyIdentity name="MealPlannerEngine" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5Jeruyq1FMpDFGXppcEN4lCEe7Jy4iibSz83fboC4wM=</dsig:DigestValue>
+        <dsig:DigestValue>q50mGoG1JVzw3FVZV6uty3MxH4tG1si+MNcA9/YavXg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
