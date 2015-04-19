@@ -11,3 +11,185 @@ Affected parameters are:
    logtoconsole = 
    logfile = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
    assemblypath = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Creating EventLog source MealPlannerEngine in log Application...
+Rolling back assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Restoring event log to previous state for source MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Creating EventLog source MealPlannerEngine in log Application...
+Rolling back assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Restoring event log to previous state for source MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Attempt to stop service MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Attempt to stop service MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Attempt to stop service MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Uninstalling assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Removing EventLog source MealPlannerEngine.
+Service MealPlannerEngine is being removed from the system...
+Service MealPlannerEngine was successfully removed from the system.
+Attempt to stop service MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Creating EventLog source MealPlannerEngine in log Application...
+Rolling back assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Restoring event log to previous state for source MealPlannerEngine.
+Installing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\MealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe

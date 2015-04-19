@@ -68,4 +68,42 @@ namespace MealPlanner.Library
 			return String.Format( "{0}:\t\t{1}", Day.ToString( "M/d" ), mealsString );
 		}
 	}
+
+	public class MealPlannerConfiguration
+	{
+		public MealPlannerConfiguration()
+		{
+			EngineService = new MealPlannerServiceConfiguration
+			{
+				HostName = "localhost",
+				Port = "17575"
+			};
+			WebService = new MealPlannerServiceConfiguration
+			{
+				HostName = "localhost",
+				Port = "17576"
+			};
+			NotifyIconService = new MealPlannerServiceConfiguration
+			{
+				HostName = "localhost",
+				Port = "17577"
+			};
+
+			DaysToPlan = 5;
+			ShoppingDaysNeeded = 2;
+		}
+
+		MealPlannerServiceConfiguration NotifyIconService { get; set; }
+		MealPlannerServiceConfiguration WebService { get; set; }
+		MealPlannerServiceConfiguration EngineService { get; set; }
+
+		int DaysToPlan { get; set; }
+		int ShoppingDaysNeeded { get; set; }
+	}
+
+	public class MealPlannerServiceConfiguration
+	{
+		public string Port { get; set; }
+		public string HostName { get; set; }
+	}
 }

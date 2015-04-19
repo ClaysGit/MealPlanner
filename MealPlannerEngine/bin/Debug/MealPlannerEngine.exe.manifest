@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlanner.Library.dll" size="8704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlanner.Library.dll" size="10752">
       <assemblyIdentity name="MealPlanner.Library" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ok3e7fLPC7/47+6DD9YALXvpbSDjY5+FjnahbpmaoAM=</dsig:DigestValue>
+        <dsig:DigestValue>+mcoQNoqZOtBJEI49TsboYVUMXoe9eSOclLr1f2AfcQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlannerEngine.exe" size="10240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MealPlannerEngine.exe" size="10752">
       <assemblyIdentity name="MealPlannerEngine" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q50mGoG1JVzw3FVZV6uty3MxH4tG1si+MNcA9/YavXg=</dsig:DigestValue>
+        <dsig:DigestValue>nbu5ny52fIHgZyt+p3DJkUeGXDnvcr7KNPS9Dj6u8BI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

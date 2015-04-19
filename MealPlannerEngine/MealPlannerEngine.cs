@@ -21,29 +21,28 @@ namespace MealPlannerEngine
 		{
 			InitializeComponent();
 
-			eventLog1 = new EventLog();
-			if ( System.Diagnostics.EventLog.SourceExists( "MealPlannerEngineSource" ) )
+			eventLog = new EventLog();
+			if ( !EventLog.SourceExists( "MealPlannerEngineSource" ) )
 			{
-				System.Diagnostics.EventLog.CreateEventSource(
-					"MealPlannerEngineSource", "MealPlannerEngineLog" );
+				EventLog.CreateEventSource( "MealPlannerEngineSource", "MealPlannerEngineLog" );
 			}
-			eventLog1.Source = "MealPlannerEngineSource";
-			eventLog1.Log = "MealPlannerEngineLog";
+			eventLog.Source = "MealPlannerEngineSource";
+			eventLog.Log = "MealPlannerEngineLog";
 		}
 
 		protected override void OnStart( string[] args )
 		{
-			eventLog1.WriteEntry( "Starting service engine", EventLogEntryType.Information, 0 );
+			eventLog.WriteEntry( "Starting service engine", EventLogEntryType.Information, 0 );
 
 			// Set up a timer to trigger every hour.
 			_updateTimer = new Timer();
-			_updateTimer.Interval = 60000 ;//* 60; // 60 seconds * 60 minutes
+			_updateTimer.Interval = 60000;//* 60; // 60 seconds * 60 minutes
 			_updateTimer.Elapsed += new ElapsedEventHandler( this.OnTimer );
 			_updateTimer.Start();
 
 			HandleMealPlan();
 
-			eventLog1.WriteEntry( "Starting service engine -- Complete", EventLogEntryType.Information, 1 );
+			eventLog.WriteEntry( "Starting service engine -- Complete", EventLogEntryType.Information, 1 );
 		}
 
 		public void OnTimer( object sender, System.Timers.ElapsedEventArgs args )
@@ -53,16 +52,16 @@ namespace MealPlannerEngine
 
 		protected override void OnStop()
 		{
-			eventLog1.WriteEntry( "Stopping service engine", EventLogEntryType.Information, 2 );
+			eventLog.WriteEntry( "Stopping service engine", EventLogEntryType.Information, 2 );
 
 			_updateTimer.Dispose();
 
-			eventLog1.WriteEntry( "Stopping service engine -- Complete", EventLogEntryType.Information, 3 );
+			eventLog.WriteEntry( "Stopping service engine -- Complete", EventLogEntryType.Information, 3 );
 		}
 
 		private void HandleMealPlan()
 		{
-			eventLog1.WriteEntry( "Managing meal plan", EventLogEntryType.Information, 3 );
+			eventLog.WriteEntry( "Managing meal plan", EventLogEntryType.Information, 3 );
 
 			var mealPlan = new Serializer().GetMealPlan();
 			var mealOptions = new Serializer().GetMealOptions();
@@ -78,7 +77,7 @@ namespace MealPlannerEngine
 
 			if ( !IsPlanSufficient( mealPlan ) )
 			{
-				new NotifyIconServiceChannel().SendMealPlanDaysNeeded( 3 );
+				new NotifyIconServiceChannel( eventLog ).SendMealPlanDaysNeeded( 3 );
 			}
 		}
 

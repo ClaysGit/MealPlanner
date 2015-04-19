@@ -27,6 +27,8 @@ namespace NotifyIconMealPlanner
 
 		private static WebServiceHost ConfigureNotifyIconService( INotifyIconService notifyIconService )
 		{
+			var config = new Serializer().GetConfiguration();
+
 			Uri serviceAddress = new Uri( "http://localhost:17576" );
 			var notifyIconServiceHost = new WebServiceHost( notifyIconService, serviceAddress );
 

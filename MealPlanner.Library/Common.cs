@@ -21,6 +21,11 @@ namespace MealPlanner.Library
 			return LoadFile<MealPlan>( MealPlanFilename );
 		}
 
+		public MealPlannerConfiguration GetConfiguration()
+		{
+			return LoadFile<MealPlannerConfiguration>( MealPlannerConfigurationFileName );
+		}
+
 		public void SetMealOptions( List<MealOption> mealOptions )
 		{
 			SaveFile( MealOptionsFilename, mealOptions );
@@ -29,6 +34,11 @@ namespace MealPlanner.Library
 		public void SetMealPlan( MealPlan mealPlan )
 		{
 			SaveFile( MealPlanFilename, mealPlan );
+		}
+
+		public void SetConfiguration( MealPlannerConfiguration configuration )
+		{
+			SaveFile( MealPlannerConfigurationFileName, configuration );
 		}
 
 		private T LoadFile<T>( string filename )
@@ -68,7 +78,7 @@ namespace MealPlanner.Library
 			}
 		}
 
-		private string GetFullPath(string filename)
+		private string GetFullPath( string filename )
 		{
 			var folderPath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ApplicationData ), AppFolder );
 			if ( !Directory.Exists( folderPath ) )
@@ -82,5 +92,6 @@ namespace MealPlanner.Library
 		private const string AppFolder = "MealPlanner";
 		private const string MealOptionsFilename = "mealoptions.xml";
 		private const string MealPlanFilename = "mealplan.xml";
+		private const string MealPlannerConfigurationFileName = "mealplanner.config.xml";
 	}
 }

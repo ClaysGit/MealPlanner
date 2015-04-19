@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel.Web;
 using System.Text;
@@ -11,31 +12,47 @@ namespace MealPlannerEngine
 {
 	class NotifyIconServiceChannel
 	{
-		public NotifyIconServiceChannel()
+		public NotifyIconServiceChannel( EventLog eventLog )
 		{
 			_baseAddress = new Uri( "http://localhost:17576" );
+			_eventLog = eventLog;
 		}
 
-		public void SendMealPlanDaysNeeded(int daysNeeded)
+		public void SendMealPlanDaysNeeded( int daysNeeded )
 		{
-			using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+			try
 			{
-				INotifyIconService channel = cf.CreateChannel();
+				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+				{
+					INotifyIconService channel = cf.CreateChannel();
 
-				channel.NotifyPlanDaysNeeded( daysNeeded );
+					channel.NotifyPlanDaysNeeded( daysNeeded );
+				}
+			}
+			catch ( Exception e )
+			{
+				_eventLog.WriteEntry( String.Format( "Exception in SendMealPlanDaysNeeded with daysNeeded '{0}'\n{1}", daysNeeded, e.Message ), EventLogEntryType.Error, 4 );
 			}
 		}
 
 		public void SendShoppingNeeded( int daysLeft )
 		{
-			using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+			try
 			{
-				INotifyIconService channel = cf.CreateChannel();
+				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+				{
+					INotifyIconService channel = cf.CreateChannel();
 
-				channel.NotifyShoppingNeeded( daysLeft );
+					channel.NotifyShoppingNeeded( daysLeft );
+				}
+			}
+			catch ( Exception e )
+			{
+				_eventLog.WriteEntry( String.Format( "Exception in SendShoppingNeeded with daysLeft '{0}'\n{1}", daysLeft, e.Message ), EventLogEntryType.Error, 5 );
 			}
 		}
 
 		private Uri _baseAddress;
+		private EventLog _eventLog;
 	}
 }
