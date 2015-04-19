@@ -78,8 +78,7 @@ namespace MealPlannerEngine
 
 			if ( !IsPlanSufficient( mealPlan ) )
 			{
-				var webClient = new WebClient();
-				//webClient.
+				System.Diagnostics.Process.Start( "http://localhost:17575/" );
 			}
 		}
 
