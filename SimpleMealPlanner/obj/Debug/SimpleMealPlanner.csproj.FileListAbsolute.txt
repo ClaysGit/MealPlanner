@@ -1,0 +1,17 @@
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\bin\Debug\SimpleMealPlanner.exe.config
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\bin\Debug\SimpleMealPlanner.exe
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\bin\Debug\SimpleMealPlanner.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\bin\Debug\MealPlanner.Library.dll
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\bin\Debug\MealPlanner.Library.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\MainWindow.baml
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\MainWindow.g.cs
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\App.g.cs
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner_MarkupCompile.cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.g.resources
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.exe
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\SimpleMealPlanner.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\EditMealOption.baml
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\SimpleMealPlanner\obj\Debug\EditMealOption.g.cs

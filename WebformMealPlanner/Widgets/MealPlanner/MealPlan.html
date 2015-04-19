@@ -1,0 +1,35 @@
+﻿<div>
+    <h3>My meal plan</h3>
+
+    <div ng-repeat="dayPlan in data.MealPlanDays">
+        <table>
+            <tr>
+                <td>{{dayPlan.Day}}</td>
+                <td>
+                    <div>{{dayPlan.Breakfast.Name}}</div>
+                    <div>{{dayPlan.Lunch.Name}}</div>
+                    <div>{{dayPlan.Dinner.Name}}</div>
+                </td>
+                <td>
+                    <input type="button" value="X" ng-click="Remove(dayPlan)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td>Next day</td>
+                <td>
+                    <meal-option-picker data="mealOptions" choice="Editable.Breakfast"></meal-option-picker>
+                    <meal-option-picker data="mealOptions" choice="Editable.Lunch"></meal-option-picker>
+                    <meal-option-picker data="mealOptions" choice="Editable.Dinner"></meal-option-picker>
+                </td>
+                <td>
+                    <input type="button" value="Add" ng-click="Add(Editable)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

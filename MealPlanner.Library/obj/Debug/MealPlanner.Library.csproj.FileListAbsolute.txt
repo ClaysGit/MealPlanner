@@ -1,0 +1,5 @@
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlanner.Library\bin\Debug\MealPlanner.Library.dll
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlanner.Library\bin\Debug\MealPlanner.Library.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlanner.Library\obj\Debug\MealPlanner.Library.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlanner.Library\obj\Debug\MealPlanner.Library.dll
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlanner.Library\obj\Debug\MealPlanner.Library.pdb

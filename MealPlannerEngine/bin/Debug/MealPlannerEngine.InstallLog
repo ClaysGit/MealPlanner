@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+Installing service MealPlannerEngine...
+Service MealPlannerEngine has been successfully installed.
+Creating EventLog source MealPlannerEngine in log Application...
+Committing assembly 'C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.InstallLog
+   assemblypath = C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe

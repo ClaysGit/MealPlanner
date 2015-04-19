@@ -1,0 +1,38 @@
+﻿@model WebformMealPlanner.Models.MealPlannerModel
+
+@using System.Web.Script.Serialization;
+@using System.Web.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/MealPlanner/Index.js"></script>
+    <script type="text/javascript" src="~/Widgets/MealPlanner/MealOptionPicker.js"></script>
+    <script type="text/javascript" src="~/Widgets/MealPlanner/MealPlan.js"></script>
+    <script type="text/javascript" src="~/Widgets/MealPlanner/MealOptions.js"></script>
+    <script type="text/javascript">
+        $('document').ready(function() {
+            angular.bootstrap($("#controller-div"), ["MealPlanner"]);
+        });
+    </script>
+}
+
+<h2>Index</h2>
+
+<div id="controller-div" ng-controller="MealPlannerController">
+    <div ng-view>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <meal-plan data="mealPlan" meal-options="mealOptions"></meal-plan>
+            </td>
+            <td>
+                <meal-options data="mealOptions"></meal-options>
+            </td>
+        </tr>
+    </table>
+</div>

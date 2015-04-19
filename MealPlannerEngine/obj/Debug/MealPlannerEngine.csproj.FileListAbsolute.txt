@@ -1,0 +1,15 @@
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe.config
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.exe
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.pdb
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.exe.manifest
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlannerEngine.application
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.exe.manifest
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.application
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.MealPlannerEngine.resources
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.ProjectInstaller.resources
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\obj\Debug\MealPlannerEngine.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlanner.Library.dll
+C:\Users\Clay\Documents\GitHub\SimpleMealPlanner\MealPlannerEngine\bin\Debug\MealPlanner.Library.pdb
