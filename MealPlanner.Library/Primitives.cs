@@ -93,12 +93,12 @@ namespace MealPlanner.Library
 			ShoppingDaysNeeded = 2;
 		}
 
-		MealPlannerServiceConfiguration NotifyIconService { get; set; }
-		MealPlannerServiceConfiguration WebService { get; set; }
-		MealPlannerServiceConfiguration EngineService { get; set; }
+		public MealPlannerServiceConfiguration NotifyIconService { get; set; }
+		public MealPlannerServiceConfiguration WebService { get; set; }
+		public MealPlannerServiceConfiguration EngineService { get; set; }
 
-		int DaysToPlan { get; set; }
-		int ShoppingDaysNeeded { get; set; }
+		public int DaysToPlan { get; set; }
+		public int ShoppingDaysNeeded { get; set; }
 	}
 
 	public class MealPlannerServiceConfiguration
