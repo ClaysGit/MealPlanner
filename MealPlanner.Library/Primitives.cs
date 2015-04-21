@@ -89,7 +89,7 @@ namespace MealPlanner.Library
 				Port = "17577"
 			};
 
-            WebDeploymentPath = @"C:\MealPlannerTest";
+            WebDeploymentPath = @"C:\MealPlannerTest\";
 
 			DaysToPlan = 5;
 			ShoppingDaysNeeded = 2;
