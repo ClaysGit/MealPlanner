@@ -1,14 +1,19 @@
-﻿<div>
-    <div>
+﻿<div class="meal-planner-panel">
+    <div class="h3">
         {{GetDayString()}}
     </div>
     <div>
-        <meal-option-picker data="mealOptions" choice="data.Breakfast"></meal-option-picker>
-        <meal-option-picker data="mealOptions" choice="data.Lunch"></meal-option-picker>
-        <meal-option-picker data="mealOptions" choice="data.Dinner"></meal-option-picker>
+        <div class="meal-label" ng-class="{'active-meal': CurrentMeal=='Breakfast'}" ng-click="CurrentMeal='Breakfast'">Breakfast<span class="meal-label-name"> - {{Editable.Breakfast.Name}}</span></div>
+        <div class="meal-label" ng-class="{'active-meal': CurrentMeal=='Lunch'}" ng-click="CurrentMeal='Lunch'">Lunch<span class="meal-label-name"> - {{Editable.Lunch.Name}}</span></div>
+        <div class="meal-label" ng-class="{'active-meal': CurrentMeal=='Dinner'}" ng-click="CurrentMeal='Dinner'">Dinner<span class="meal-label-name"> - {{Editable.Dinner.Name}}</span></div>
     </div>
-    <div>
-        <button type="button" class="btn btn-success" ng-click="Save(data)">Save</button>
-        <button type="button" class="btn btn-primary" ng-click="Delete(data)">Delete</button>
+    <div class="meal-planner-options">
+        <meal-option-picker ng-show="CurrentMeal=='Breakfast'" data="mealOptions" choice="Editable.Breakfast"></meal-option-picker>
+        <meal-option-picker ng-show="CurrentMeal=='Lunch'" data="mealOptions" choice="Editable.Lunch"></meal-option-picker>
+        <meal-option-picker ng-show="CurrentMeal=='Dinner'" data="mealOptions" choice="Editable.Dinner"></meal-option-picker>
+    </div>
+    <div class="meal-planner-actions">
+        <button type="button" class="btn btn-success" ng-click="Save(Editable)">Save</button>
+        <button type="button" class="btn btn-danger" ng-click="Delete(Editable)">Delete</button>
     </div>
 </div>

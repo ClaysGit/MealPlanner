@@ -1,3 +1,6 @@
 ﻿<div>
-    <select ng-options="option.Name for option in data.MealOptions" ng-model="choice"></select>
+    <span ng-repeat="option in data.MealOptions">
+        <button type="button" class="meal-option-button btn {{GetButtonType(option)}}"
+            ng-bind="option.Name" ng-click="SelectOption(option)"></button>
+    </span>
 </div>

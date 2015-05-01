@@ -4,6 +4,8 @@
 			$scope.mealPlan = {};
 			$scope.mealOptions = { MealOptions: [] };
 			$scope.mode = 'MealPlan'; //MealPlan, MealOptions, Config
+			$scope.calendarDays = [];
+			$scope.selectedDay = null;
 
 			$scope.$on('AddMealPlanDay', function(event, args) {
 				$http.post('MealPlanner/AddMealPlanDay', {
@@ -51,10 +53,50 @@
 				});
 			});
 
+			$scope.$on('SetCalendarDates', function(event, args) {
+				var firstDate = args.FirstDate;
+				var lastDate = args.LastDate;
+
+				$scope.calendarDays = [];
+				for (var i = 0; i < $scope.mealPlan.MealPlanDays.length; ++i) {
+					var planDay = $scope.mealPlan.MealPlanDays[i];
+					var date = new Date(planDay.Day.FullYear, planDay.Day.Month, planDay.Day.DayOfMonth);
+
+					if (simpleDateLTE(firstDate, date) && simpleDateLTE(date, lastDate)) {
+						$scope.calendarDays.push(planDay);
+					}
+				}
+
+				$scope.$broadcast('CalendarUpdated', { CalendarDays: $scope.calendarDays });
+			});
+
+			$scope.$on('SelectDay', function(event, args) {
+				var date = args.SelectedDate;
+
+				$scope.selectedDay = {
+					Day: {
+						FullYear: date.getFullYear(),
+						Month: date.getMonth(),
+						DayOfMonth: date.getDate()
+					}
+				};
+				for (var i = 0; i < $scope.mealPlan.MealPlanDays.length; ++i) {
+					var planDay = $scope.mealPlan.MealPlanDays[i];
+
+					if (planDay.Day.FullYear == date.getFullYear()
+						&& planDay.Day.Month == date.getMonth()
+						&& planDay.Day.DayOfMonth == date.getDate()) {
+						$scope.selectedDay = planDay;
+						return;
+					}
+				}
+			});
+
 			$scope.GetMealPlan = function() {
 				$http.post('MealPlanner/GetMealPlan')
 				.success(function(response) {
 					$scope.mealPlan = response;
+					$scope.$broadcast('MealPlanUpdated');
 				})
 				.error(function(response) {
 					alert('There was a problem getting the meal plan from the server');
@@ -73,5 +115,18 @@
 
 			$scope.GetMealPlan();
 			$scope.GetMealOptions();
+
+			function simpleDateLTE(date1, date2) {
+				if (date1.getFullYear() < date2.getFullYear())	return true;
+				else if (date1.getFullYear() > date2.getFullYear()) return false;
+
+				if (date1.getMonth() < date2.getMonth()) return true;
+				else if (date1.getMonth() > date2.getMonth()) return false;
+
+				if (date1.getDate() < date2.getDate()) return true;
+				else if (date1.getDate() > date2.getDate()) return false;
+
+				return true;
+			}
 		}]);
 })();

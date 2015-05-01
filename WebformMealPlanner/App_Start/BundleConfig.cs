@@ -56,6 +56,11 @@ namespace WebformMealPlanner
 				"~/Content/themes/cerulean.css"
 				) );
 
+			bundles.Add( new StyleBundle( "~/Content/bootstrap-css-flatly" ).Include(
+				"~/Content/bootstrap-3.3.4-dist/css/bootstrap-theme.css",
+				"~/Content/themes/flatly.css"
+				) );
+
 			bundles.Add( new ScriptBundle( "~/Content/bootstrap-js" ).Include(
 				"~/Content/bootstrap-3.3.4-dist/js/bootstrap.js"
 				) );

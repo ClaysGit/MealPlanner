@@ -5,21 +5,25 @@
 			restrict: 'E',
 			templateUrl: 'Widgets/MealPlanner/CalendarMealPlan.html',
 			scope: {
-				data: "=",
 				selectedDay: "="
 			},
 			controller: ['$scope', function($scope) {
 				$scope.Today = new Date();
+				$scope.calendarDays = [];
 
 				var dayOfWeek = $scope.Today.getDay();
 
-				var startDate = $scope.Today;
+				$scope.startDate = $scope.Today;
 				for (var i = 0; i < dayOfWeek; ++i) {
-					startDate = subtractDay(startDate);
+					$scope.startDate = subtractDay($scope.startDate);
+				}
+				$scope.lastDate = $scope.startDate;
+				for (var i = 0; i < 21; ++i) {
+					$scope.lastDate = addDay($scope.lastDate);
 				}
 
 				$scope.SelectDay = function(calendarDay) {
-					$scope.selectedDay = calendarDay.PlanDay;
+					$scope.$emit('SelectDay', { SelectedDate: calendarDay.Date });
 				};
 
 				$scope.IsDaySelected = function(calendarDay) {
@@ -30,18 +34,33 @@
 				$scope.GetHeaderString = function() {
 					var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-					var lastDay = $scope.Weeks[2][6].Date;
-
-					if (startDate.getMonth() == lastDay.getMonth()) {
-						return monthNames[startDate.getMonth()];
+					if ($scope.startDate.getMonth() == $scope.lastDate.getMonth()) {
+						return monthNames[$scope.startDate.getMonth()];
 					}
 					else {
-						return monthNames[startDate.getMonth()] + " - " + monthNames[lastDay.getMonth()];
+						return monthNames[$scope.startDate.getMonth()] + " - " + monthNames[$scope.lastDate.getMonth()];
 					}
 				};
 
+				$scope.GetDayPlanClass = function(calendarDay) {
+					var renderType = "unplanned";
+					if (!calendarDay) return renderType;
+
+					if (calendarDay.ShoppedOn) {
+						renderType = "shopped-on";
+					}
+					else if (calendarDay.ShoppedFor) {
+						renderType = "shopped-for";
+					}
+					else if (calendarDay.Planned) {
+						renderType = "planned";
+					}
+
+					return renderType;
+				};
+
 				function populateCalendar() {
-					var currentDate = startDate;
+					var currentDate = $scope.startDate;
 					$scope.Weeks = [];
 					for (var i = 0; i < 3; ++i) {
 						$scope.Weeks.push([]);
@@ -49,24 +68,23 @@
 
 						for (var j = 0; j < 7; ++j) {
 							var planDay = findPlanDay(currentDate);
-							var renderType = "unplanned";
-							if (planDay.ShoppedOn) {
-								renderType = "shopped-on";
-							}
-							else if (planDay.ShoppedFor) {
-								renderType = "shopped-for";
-							}
-							else if (planDay.Breakfast != null &&
-								planDay.Lunch != null &&
-								planDay.Dinner != null) {
-								renderType = "planned";
-							}
+
+							var breakfast = !!planDay.Breakfast ? planDay.Breakfast.Name : 'None';
+							var lunch = !!planDay.Lunch ? planDay.Lunch.Name : 'None';
+							var dinner = !!planDay.Dinner ? planDay.Dinner.Name : 'None';
+							var planned = !!planDay.Breakfast && !!planDay.Lunch && !!planDay.Dinner;
+							var shoppedFor = planDay.ShoppedFor;
+							var shoppedOn = planDay.ShoppedOn;
 
 							week.push({
 								Date: currentDate,
 								Number: currentDate.getDate(),
-								ClassName: renderType,
-								PlanDay: planDay
+								BreakfastName: breakfast,
+								LunchName: lunch,
+								DinnerName: dinner,
+								Planned: planned,
+								ShoppedFor: shoppedFor,
+								ShoppedOn: shoppedOn
 							});
 
 							currentDate = addDay(currentDate);
@@ -75,7 +93,21 @@
 				}
 				populateCalendar();
 
-				$scope.$on('MealPlanUpdated', populateCalendar);
+				$scope.$on('CalendarUpdated', function(event, args) {
+					$scope.calendarDays = args.CalendarDays;
+					populateCalendar();
+				});
+
+				function requestCalendarUpdate() {
+					$scope.$emit('SetCalendarDates', {
+						FirstDate: $scope.startDate,
+						LastDate: $scope.lastDate
+					});
+				}
+				requestCalendarUpdate();
+				$scope.$on('MealPlanUpdated', requestCalendarUpdate);
+
+				$scope.$emit('SelectDay', { SelectedDate: new Date() });
 
 				function addDay(date) {
 					var dateTime = date.getTime();
@@ -92,8 +124,8 @@
 				}
 
 				function findPlanDay(date) {
-					for (var i = 0; i < $scope.data.MealPlanDays.length; ++i) {
-						var mealPlanDay = $scope.data.MealPlanDays[i];
+					for (var i = 0; i < $scope.calendarDays.length; ++i) {
+						var mealPlanDay = $scope.calendarDays[i];
 						if (isPlanDayEqualToDate(mealPlanDay, date)) {
 							return mealPlanDay;
 						}

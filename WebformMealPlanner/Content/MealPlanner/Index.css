@@ -1,19 +1,19 @@
 ﻿#meal-plan-calendar.calendar
 {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 }
 
 #meal-plan-calendar .calendar-header
 {
-	text-align:center;
+	text-align: center;
 	height: 2em;
 }
 
-#meal-plan-calendar .calendar-header th
-{
-	border-bottom: none;
-}
+	#meal-plan-calendar .calendar-header th
+	{
+		border-bottom: none;
+	}
 
 #meal-plan-calendar .calendar-week
 {
@@ -22,47 +22,108 @@
 
 #meal-plan-calendar .calendar-day
 {
-	height:100%;
-	border-top-color:#fff;
-	border-left:solid 1px #fff;
+	height: 100%;
+	border-top-color: #fff;
+	border-left: solid 1px #fff;
 }
 
-#meal-plan-calendar .calendar-day.unplanned
+#meal-plan-calendar .day-num
 {
-	background-color: #fcc;
+	font-weight:bold;
 }
 
-#meal-plan-calendar .calendar-day.planned
+	#meal-plan-calendar .calendar-day.unplanned
+	{
+		background-color: #fcc;
+	}
+
+	#meal-plan-calendar .calendar-day.planned
+	{
+		background-color: #ffc;
+	}
+
+	#meal-plan-calendar .calendar-day.shopped-for
+	{
+		background-color: #cfc;
+	}
+
+	#meal-plan-calendar .calendar-day.shopped-on
+	{
+		background-color: #9ef;
+	}
+
+	#meal-plan-calendar .calendar-day.unplanned.selected
+	{
+		background-color: #f88;
+	}
+
+	#meal-plan-calendar .calendar-day.planned.selected
+	{
+		background-color: #ff8;
+	}
+
+	#meal-plan-calendar .calendar-day.shopped-for.selected
+	{
+		background-color: #8f8;
+	}
+
+	#meal-plan-calendar .calendar-day.shopped-on.selected
+	{
+		background-color: #6cf;
+	}
+
+.meal-planner-panel
 {
-	background-color: #ffc;
+	background-color: #f3f3f3;
+	padding-right: 2em;
+	padding-left: 2em;
+	padding-bottom: 2em;
+	padding-top: 1em;
 }
 
-#meal-plan-calendar .calendar-day.shopped-for
+.meal-label
 {
-	background-color: #cfc;
+	font-size: 150%;
+	background-color: #ccc;
+	padding-left: 0.3em;
+	cursor: pointer;
 }
 
-#meal-plan-calendar .calendar-day.shopped-on
+	.meal-label.active-meal
+	{
+		background-color: #ffc;
+	}
+
+	.meal-label .meal-label-name
+	{
+		font-size: 75%;
+		color: #777;
+	}
+
+.meal-planner-actions
 {
-	background-color: #9ef;
+	margin-top: 2em;
+	text-align: right;
 }
 
-#meal-plan-calendar .calendar-day.unplanned.selected
+.meal-planner-options
 {
-	background-color: #f88;
+	margin-top: 2em;
 }
 
-#meal-plan-calendar .calendar-day.planned.selected
+	.meal-planner-options .meal-option-button
+	{
+		margin-right: 1em;
+		margin-top: 1em;
+	}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 {
-	background-color: #ff8;
+	background-image: none;
 }
 
-#meal-plan-calendar .calendar-day.shopped-for.selected
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-brand
 {
-	background-color: #8f8;
-}
-
-#meal-plan-calendar .calendar-day.shopped-on.selected
-{
-	background-color: #6cf;
+	color:black;
 }

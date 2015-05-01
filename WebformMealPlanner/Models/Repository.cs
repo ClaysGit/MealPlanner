@@ -63,6 +63,8 @@ namespace WebformMealPlanner.Models
 
 		public MealPlanViewModel RemoveMealPlanDay( JavascriptDateTime day )
 		{
+			RemoveMealPlanDayFromMealPlan( day );
+
 			return MealPlanToViewModel( _currentMealPlan );
 		}
 

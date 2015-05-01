@@ -28,7 +28,8 @@
                 </td>
                 <td>
                     <input type="text" ng-model="Editable.NewIngredient" ng-keypress="OnNewIngredientKeyDown($event.which)" />
-                    <div ng-repeat="ingredient in Editable.KeyIngredients">{{ingredient}} <button type="button" class="btn btn-primary" ng-click="RemoveIngredient(ingredient)">X</button></div>
+                    <span>Press 'Enter' to add</span>
+                    <div ng-repeat="ingredient in Editable.KeyIngredients">{{ingredient}} <button type="button" class="btn btn-xs btn-primary" ng-click="RemoveIngredient(ingredient)">X</button></div>
                 </td>
                 <td>
                     <button type="button" class="btn btn-success" ng-click="Add(Editable)">Save</button>

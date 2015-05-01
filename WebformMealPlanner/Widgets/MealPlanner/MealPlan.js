@@ -6,10 +6,12 @@
 			templateUrl: 'Widgets/MealPlanner/MealPlan.html',
 			scope: {
 				data: "=",
-				mealOptions: "="
+				mealOptions: "=",
+				calendarDays: "=",
+				selectedDay: "="
 			},
 			controller: ['$scope', function($scope) {
-				$scope.activeDay = null;
+				
 			}]
 		};
 	});

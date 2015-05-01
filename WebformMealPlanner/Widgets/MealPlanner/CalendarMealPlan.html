@@ -1,18 +1,27 @@
 ﻿<table id="meal-plan-calendar" class="calendar table">
     <thead>
         <tr class="calendar-header h3">
-            <th colspan="7">{{GetHeaderString()}}
-            </th>
+            <th colspan="7">{{GetHeaderString()}}</th>
+        </tr>
+        <tr class="calendar-header h4">
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thur</th>
+            <th>Fri</th>
+            <th>Sat</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="week in Weeks" class="calendar-week">
-            <td ng-repeat="day in week" class="calendar-day {{day.ClassName}}" ng-class="{'selected': IsDaySelected(day)}" ng-click="SelectDay(day)">
+            <td ng-repeat="day in week" class="calendar-day {{GetDayPlanClass(day)}}" ng-click="SelectDay(day)"
+                ng-class="{'selected': IsDaySelected(day)}">
                 <span class="day-num" ng-bind="day.Number"></span>
                 <div class="meal-plan">
-                    <div ng-if="!!day.PlanDay.Breakfast" ng-bind="day.PlanDay.Breakfast.Name"></div>
-                    <div ng-if="!!day.PlanDay.Lunch" ng-bind="day.PlanDay.Lunch.Name"></div>
-                    <div ng-if="!!day.PlanDay.Dinner" ng-bind="day.PlanDay.Dinner.Name"></div>
+                    <div ng-bind="day.BreakfastName"></div>
+                    <div ng-bind="day.LunchName"></div>
+                    <div ng-bind="day.DinnerName"></div>
                 </div>
             </td>
         </tr>
