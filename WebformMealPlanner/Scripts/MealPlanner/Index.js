@@ -3,17 +3,20 @@
 		.controller("MealPlannerController", ["$scope", "$http", function($scope, $http) {
 			$scope.mealPlan = {};
 			$scope.mealOptions = { MealOptions: [] };
+			$scope.mode = 'MealPlan'; //MealPlan, MealOptions, Config
 
 			$scope.$on('AddMealPlanDay', function(event, args) {
 				$http.post('MealPlanner/AddMealPlanDay', {
 					day: {
 						BreakfastName: args.Breakfast.Name,
 						LunchName: args.Lunch.Name,
-						DinnerName: args.Dinner.Name
+						DinnerName: args.Dinner.Name,
+						Day: args.Day
 					}
 				})
 				.success(function(response) {
 					$scope.mealPlan = response;
+					$scope.$broadcast('MealPlanUpdated');
 				});
 			});
 
@@ -35,6 +38,7 @@
 				})
 				.success(function(response) {
 					$scope.mealPlan = response;
+					$scope.$broadcast('MealPlanUpdated');
 				});
 			});
 

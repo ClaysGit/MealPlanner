@@ -1,32 +1,39 @@
-﻿<div>
-    <h3>My meal options</h3>
-
-    <div ng-repeat="option in data.MealOptions">
-        <table>
+﻿<div class="container">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>{{option.Name}}</td>
+                <th>Name
+                </th>
+                <th>Ingredients
+                </th>
+                <th>Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="option in data.MealOptions">
+                <td>{{option.Name}}
+                </td>
                 <td>
                     <div ng-repeat="ingredient in option.KeyIngredients">{{ingredient}}</div>
                 </td>
                 <td>
-                    <input type="button" value="X" ng-click="Remove(option)" />
+                    <button type="button" class="btn btn-warning" ng-click="Edit(option)">Edit</button>
+                    <button type="button" class="btn btn-danger" ng-click="Remove(option)">Remove</button>
                 </td>
             </tr>
-        </table>
-    </div>
-
-    <div>
-        <table>
             <tr>
-                <td>New option: <input type="text" ng-model="Editable.Name" /></td>
                 <td>
-                    Ingredients <input type="text" ng-model="Editable.NewIngredient" ng-keypress="OnNewIngredientKeyDown($event.which)" />
-                    <div ng-repeat="ingredient in Editable.KeyIngredients">{{ingredient}}</div>
+                    <input type="text" ng-model="Editable.Name" />
                 </td>
                 <td>
-                    <input type="button" value="Add" ng-click="Add(Editable)" />
+                    <input type="text" ng-model="Editable.NewIngredient" ng-keypress="OnNewIngredientKeyDown($event.which)" />
+                    <div ng-repeat="ingredient in Editable.KeyIngredients">{{ingredient}} <button type="button" class="btn btn-primary" ng-click="RemoveIngredient(ingredient)">X</button></div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" ng-click="Add(Editable)">Save</button>
                 </td>
             </tr>
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>

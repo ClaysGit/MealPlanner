@@ -15,9 +15,6 @@ namespace WebformMealPlanner.Controllers
 			_repository = new MealPlannerRepository();
 		}
 
-		//
-		// GET: /MealPlanner/
-
 		public ActionResult Index()
 		{
 			return View();
@@ -48,7 +45,7 @@ namespace WebformMealPlanner.Controllers
 		}
 
 		[HttpPost]
-		public JsonResult RemoveMealPlanDay( string day )
+		public JsonResult RemoveMealPlanDay( JavascriptDateTime day )
 		{
 			return Json( _repository.RemoveMealPlanDay( day ) );
 		}

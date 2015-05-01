@@ -10,7 +10,7 @@
 			},
 			controller: ['$scope', function($scope) {
 				$scope.$watchCollection('data.MealOptions', function() {
-					if ($scope.data.MealOptions.length > 0) {
+					if (!!$scope.data && !!$scope.data.MealOptions && $scope.data.MealOptions.length > 0) {
 						$scope.choice = $scope.data.MealOptions[0];
 					}
 				});

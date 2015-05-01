@@ -41,7 +41,21 @@ namespace MealPlanner.Management
 			if ( appPool == null )
 			{
 				serverManager.ApplicationPools.Add( appPoolName );
+				appPool = serverManager.ApplicationPools.Single( p => String.Equals( p.Name, appPoolName ) );
+				foreach ( var attr in appPool.Attributes )
+				{
+					try
+					{
+						Console.WriteLine( String.Format( "Attr '{0}' has value {1}", attr.Name, attr.Value ) );
+					}
+					catch ( Exception e )
+					{
+						Console.WriteLine( String.Format( "Attr '{0}' does not have a valid Value.\n\t\tException: {1}", attr.Name, e.Message ) );
+					}
+				}
 
+				appPool.ProcessModel.IdentityType = ProcessModelIdentityType.SpecificUser;
+				appPool.ProcessModel.
 
 				return true;
 			}

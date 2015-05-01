@@ -9,8 +9,12 @@
 
 @section scripts
 {
+    <link href="~/Content/MealPlanner/Index.css" rel="stylesheet"/>
+
     <script type="text/javascript" src="~/Scripts/MealPlanner/Index.js"></script>
     <script type="text/javascript" src="~/Widgets/MealPlanner/MealOptionPicker.js"></script>
+    <script type="text/javascript" src="~/Widgets/MealPlanner/CalendarMealPlan.js"></script>
+    <script type="text/javascript" src="~/Widgets/MealPlanner/MealDayPlanner.js"></script>
     <script type="text/javascript" src="~/Widgets/MealPlanner/MealPlan.js"></script>
     <script type="text/javascript" src="~/Widgets/MealPlanner/MealOptions.js"></script>
     <script type="text/javascript">
@@ -20,19 +24,33 @@
     </script>
 }
 
-<h2>Index</h2>
-
 <div id="controller-div" ng-controller="MealPlannerController">
-    <div ng-view>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Meal Planner</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{'active': mode=='MealPlan'}"><a href="#" ng-click="mode='MealPlan'">Meal Plan <span ng-if="mode=='MealPlan'" class="sr-only">(current)</span></a></li>
+                    <li ng-class="{'active': mode=='MealOptions'}"><a href="#" ng-click="mode='MealOptions'">Meal Options <span ng-if="mode=='MealOptions'" class="sr-only">(current)</span></a></li>
+                    <li ng-class="{'active': mode=='Config'}"><a href="#" ng-click="mode='Config'">Configure <span ng-if="mode=='Config'" class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-show="mode=='MealPlan'">
+        <meal-plan data="mealPlan" meal-options="mealOptions"></meal-plan>
     </div>
-    <table>
-        <tr>
-            <td>
-                <meal-plan data="mealPlan" meal-options="mealOptions"></meal-plan>
-            </td>
-            <td>
-                <meal-options data="mealOptions"></meal-options>
-            </td>
-        </tr>
-    </table>
+    <div ng-show="mode=='MealOptions'">
+        <meal-options data="mealOptions"></meal-options>
+    </div>
 </div>

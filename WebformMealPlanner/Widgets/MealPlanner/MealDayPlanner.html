@@ -1,0 +1,14 @@
+﻿<div>
+    <div>
+        {{GetDayString()}}
+    </div>
+    <div>
+        <meal-option-picker data="mealOptions" choice="data.Breakfast"></meal-option-picker>
+        <meal-option-picker data="mealOptions" choice="data.Lunch"></meal-option-picker>
+        <meal-option-picker data="mealOptions" choice="data.Dinner"></meal-option-picker>
+    </div>
+    <div>
+        <button type="button" class="btn btn-success" ng-click="Save(data)">Save</button>
+        <button type="button" class="btn btn-primary" ng-click="Delete(data)">Delete</button>
+    </div>
+</div>

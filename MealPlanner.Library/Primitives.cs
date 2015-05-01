@@ -40,6 +40,9 @@ namespace MealPlanner.Library
 
 		public DateTime Day { get; set; }
 
+		public bool ShoppedFor { get; set; }
+		public bool ShoppedOn { get; set; }
+
 		public override string ToString()
 		{
 			var mealsString = "No Meals Planned";

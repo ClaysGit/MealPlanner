@@ -13,6 +13,8 @@ namespace WebformMealPlanner.Models
 		{
 			_currentMealPlan = new Serializer().GetMealPlan();
 			_currentMealOptions = new Serializer().GetMealOptions();
+
+			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
 		}
 
 		public MealPlanViewModel GetMealPlanViewModel()
@@ -27,21 +29,17 @@ namespace WebformMealPlanner.Models
 
 		public MealPlanViewModel AddMealPlanDay( MealPlanDayPersistModel day )
 		{
+			RemoveMealPlanDayFromMealPlan( day.Day );
+
 			var mealPlanDay = new MealPlanDay();
 			mealPlanDay.Breakfast = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.BreakfastName ) ).FirstOrDefault();
 			mealPlanDay.Lunch = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.LunchName ) ).FirstOrDefault();
 			mealPlanDay.Dinner = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.DinnerName ) ).FirstOrDefault();
-
-			if ( _currentMealPlan.MealPlanDays.Any() )
-			{
-				mealPlanDay.Day = _currentMealPlan.MealPlanDays.Select( d => d.Day ).Max() + TimeSpan.FromDays( 1 );
-			}
-			else
-			{
-				mealPlanDay.Day = DateTime.Now;
-			}
+			mealPlanDay.Day = day.Day.ToDateTime();
 
 			_currentMealPlan.MealPlanDays.Add( mealPlanDay );
+
+			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
 
 			new Serializer().SetMealPlan( _currentMealPlan );
 
@@ -63,16 +61,8 @@ namespace WebformMealPlanner.Models
 			return MealOptionsToViewModel( _currentMealOptions );
 		}
 
-		public MealPlanViewModel RemoveMealPlanDay( string day )
+		public MealPlanViewModel RemoveMealPlanDay( JavascriptDateTime day )
 		{
-			var mealPlanDay = _currentMealPlan.MealPlanDays.Where( d => d.Day.ToString( _dateFormat ) == day ).FirstOrDefault();
-
-			if ( mealPlanDay != null )
-			{
-				_currentMealPlan.MealPlanDays.Remove( mealPlanDay );
-				new Serializer().SetMealPlan( _currentMealPlan );
-			}
-
 			return MealPlanToViewModel( _currentMealPlan );
 		}
 
@@ -100,7 +90,7 @@ namespace WebformMealPlanner.Models
 					Breakfast = MealOptionToViewModel( d.Breakfast ),
 					Lunch = MealOptionToViewModel( d.Lunch ),
 					Dinner = MealOptionToViewModel( d.Dinner ),
-					Day = d.Day.ToString( _dateFormat )
+					Day = new JavascriptDateTime(d.Day)
 				};
 			} ).ToArray();
 
@@ -132,6 +122,17 @@ namespace WebformMealPlanner.Models
 				Name = option.Name,
 				KeyIngredients = option.KeyIngredients.ToArray()
 			};
+		}
+
+		private void RemoveMealPlanDayFromMealPlan( JavascriptDateTime day )
+		{
+			var mealPlanDay = _currentMealPlan.MealPlanDays.Where( d => day.ToDateTime() == d.Day ).FirstOrDefault();
+
+			if ( mealPlanDay != null )
+			{
+				_currentMealPlan.MealPlanDays.Remove( mealPlanDay );
+				new Serializer().SetMealPlan( _currentMealPlan );
+			}
 		}
 
 		private MealPlan _currentMealPlan;

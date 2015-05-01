@@ -1,0 +1,68 @@
+﻿#meal-plan-calendar.calendar
+{
+	width:100%;
+	height:100%;
+}
+
+#meal-plan-calendar .calendar-header
+{
+	text-align:center;
+	height: 2em;
+}
+
+#meal-plan-calendar .calendar-header th
+{
+	border-bottom: none;
+}
+
+#meal-plan-calendar .calendar-week
+{
+	height: 5em;
+}
+
+#meal-plan-calendar .calendar-day
+{
+	height:100%;
+	border-top-color:#fff;
+	border-left:solid 1px #fff;
+}
+
+#meal-plan-calendar .calendar-day.unplanned
+{
+	background-color: #fcc;
+}
+
+#meal-plan-calendar .calendar-day.planned
+{
+	background-color: #ffc;
+}
+
+#meal-plan-calendar .calendar-day.shopped-for
+{
+	background-color: #cfc;
+}
+
+#meal-plan-calendar .calendar-day.shopped-on
+{
+	background-color: #9ef;
+}
+
+#meal-plan-calendar .calendar-day.unplanned.selected
+{
+	background-color: #f88;
+}
+
+#meal-plan-calendar .calendar-day.planned.selected
+{
+	background-color: #ff8;
+}
+
+#meal-plan-calendar .calendar-day.shopped-for.selected
+{
+	background-color: #8f8;
+}
+
+#meal-plan-calendar .calendar-day.shopped-on.selected
+{
+	background-color: #6cf;
+}

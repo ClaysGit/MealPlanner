@@ -20,11 +20,14 @@ namespace WebformMealPlanner.Models
 
 	public class MealPlanDayViewModel
 	{
-		public MealOptionViewPersistModel Breakfast;
-		public MealOptionViewPersistModel Lunch;
-		public MealOptionViewPersistModel Dinner;
+		public MealOptionViewPersistModel Breakfast { get; set; }
+		public MealOptionViewPersistModel Lunch { get; set; }
+		public MealOptionViewPersistModel Dinner { get; set; }
 
-		public string Day;
+		public bool ShoppedFor { get; set; }
+		public bool ShoppedOn { get; set; }
+
+		public JavascriptDateTime Day { get; set; }
 	}
 
 	public class MealOptionsViewModel
@@ -44,5 +47,41 @@ namespace WebformMealPlanner.Models
 		public string BreakfastName { get; set; }
 		public string LunchName { get; set; }
 		public string DinnerName { get; set; }
+		public JavascriptDateTime Day { get; set; }
+	}
+
+	public class JavascriptDateTime
+	{
+		public JavascriptDateTime()
+			: this( DateTime.Now )
+		{
+
+		}
+
+		public JavascriptDateTime( DateTime fromDate )
+		{
+			FullYear = fromDate.Year;
+			Month = fromDate.Month - 1;
+			DayOfMonth = fromDate.Day;
+		}
+
+		public int FullYear { get; set; }
+		public int Month { get; set; }
+		public int DayOfMonth { get; set; }
+
+		public DateTime ToDateTime()
+		{
+			return new DateTime( FullYear, Month + 1, DayOfMonth );
+		}
+	}
+
+	public class MealPlanDaysByDateComparer: IComparer<MealPlanDay>
+	{
+		public int Compare(MealPlanDay x, MealPlanDay y)
+		{
+			if ( x.Day < y.Day ) return -1;
+			if ( x.Day > y.Day ) return 1;
+			return 0;
+		}
 	}
 }

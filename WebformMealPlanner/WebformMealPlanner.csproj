@@ -143,6 +143,7 @@
     <Content Include="Content\bootstrap-3.3.4-dist\js\bootstrap.js" />
     <Content Include="Content\bootstrap-3.3.4-dist\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap-3.3.4-dist\js\npm.js" />
+    <Content Include="Content\MealPlanner\Index.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -2417,6 +2418,10 @@
     <Content Include="Scripts\Angular\version.txt" />
     <Content Include="Scripts\JQuery\jquery-1.11.2.js" />
     <Content Include="Scripts\JQuery\jquery-1.11.2.min.js" />
+    <Content Include="Widgets\MealPlanner\CalendarMealPlan.html" />
+    <Content Include="Widgets\MealPlanner\CalendarMealPlan.js" />
+    <Content Include="Widgets\MealPlanner\MealDayPlanner.html" />
+    <Content Include="Widgets\MealPlanner\MealDayPlanner.js" />
     <Content Include="Widgets\MealPlanner\MealOptionPicker.html" />
     <Content Include="Widgets\MealPlanner\MealOptionPicker.js" />
     <Content Include="Widgets\MealPlanner\MealOptions.html" />
