@@ -35,6 +35,11 @@ namespace WebformMealPlanner.Models
 		public MealOptionViewPersistModel[] MealOptions { get; set; }
 	}
 
+	public class ConfigurationViewModel
+	{
+
+	}
+
 	public class MealOptionViewPersistModel
 	{
 		public string Name { get; set; }

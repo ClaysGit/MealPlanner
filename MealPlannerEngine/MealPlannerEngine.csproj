@@ -84,6 +84,7 @@
     <Compile Include="MealPlannerEngine.Designer.cs">
       <DependentUpon>MealPlannerEngine.cs</DependentUpon>
     </Compile>
+    <Compile Include="MealPlannerEngineService.cs" />
     <Compile Include="NotifyIconServiceChannel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">

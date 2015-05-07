@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace MealPlanner.Library
 {
-	public class Serializer
+	public class Serializer : IMealPlanDataProvider
 	{
 		public List<MealOption> GetMealOptions()
 		{

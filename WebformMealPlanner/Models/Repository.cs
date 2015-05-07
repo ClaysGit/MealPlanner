@@ -11,8 +11,10 @@ namespace WebformMealPlanner.Models
 	{
 		public MealPlannerRepository()
 		{
-			_currentMealPlan = new Serializer().GetMealPlan();
-			_currentMealOptions = new Serializer().GetMealOptions();
+			_processAddress = "";
+			_currentMealPlan = new MealPlannerEngineServiceChannel( _processAddress ).GetMealPlan();
+			_currentMealOptions = new MealPlannerEngineServiceChannel( _processAddress ).GetMealOptions();
+			_currentConfiguration = new MealPlannerEngineServiceChannel( _processAddress ).GetConfiguration();
 
 			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
 		}
@@ -139,6 +141,7 @@ namespace WebformMealPlanner.Models
 
 		private MealPlan _currentMealPlan;
 		private List<MealOption> _currentMealOptions;
-		private const string _dateFormat = "r";
+		private MealPlannerConfiguration _currentConfiguration;
+		private string _processAddress;
 	}
 }
