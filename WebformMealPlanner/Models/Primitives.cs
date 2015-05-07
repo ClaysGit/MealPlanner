@@ -7,12 +7,6 @@ using MealPlanner.Library;
 
 namespace WebformMealPlanner.Models
 {
-	public class MealPlannerModel
-	{
-		public MealPlanViewModel MealPlan { get; set; }
-		public MealOptionsViewModel MealOptions { get; set; }
-	}
-
 	public class MealPlanViewModel
 	{
 		public MealPlanDayViewModel[] MealPlanDays { get; set; }
@@ -35,11 +29,6 @@ namespace WebformMealPlanner.Models
 		public MealOptionViewPersistModel[] MealOptions { get; set; }
 	}
 
-	public class ConfigurationViewModel
-	{
-
-	}
-
 	public class MealOptionViewPersistModel
 	{
 		public string Name { get; set; }
@@ -54,6 +43,34 @@ namespace WebformMealPlanner.Models
 		public string DinnerName { get; set; }
 		public JavascriptDateTime Day { get; set; }
 	}
+
+    public class MealPlannerConfigurationViewPersistModel
+    {
+        public string EngineServicePort { get; set; }
+        public string EngineServiceHostName { get; set; }
+
+        public string WebServicePort { get; set; }
+        public string WebServiceHostName { get; set; }
+
+        public string NotifyIconServicePort { get; set; }
+        public string NotifyIconServiceHostName { get; set; }
+
+        public int DaysToPlan { get; set; }
+        public int ShoppingDaysNeeded { get; set; }
+    }
+
+    public class IndexViewModel
+    {
+        public MealPlanViewModel MealPlan { get; set; }
+        public MealOptionsViewModel MealOptions { get; set; }
+        public MealPlannerConfigurationViewPersistModel MealPlannerConfiguration { get; set; }
+    }
+
+    public class DefaultEngineViewPersistModel
+    {
+        public string HostName { get; set; }
+        public string Port { get; set; }
+    }
 
 	public class JavascriptDateTime
 	{

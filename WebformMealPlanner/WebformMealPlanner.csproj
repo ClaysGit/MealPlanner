@@ -2430,6 +2430,8 @@
     <Content Include="Widgets\MealPlanner\MealOptionPicker.js" />
     <Content Include="Widgets\MealPlanner\MealOptions.html" />
     <Content Include="Widgets\MealPlanner\MealOptions.js" />
+    <Content Include="Widgets\MealPlanner\MealPlannerConfiguration.html" />
+    <Content Include="Widgets\MealPlanner\MealPlannerConfiguration.js" />
     <Content Include="Widgets\MealPlanner\MealPlan.html" />
     <Content Include="Widgets\MealPlanner\MealPlan.js" />
     <Content Include="Content\bootstrap-3.3.4-dist\css\bootstrap-theme.css.map" />

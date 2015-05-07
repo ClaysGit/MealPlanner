@@ -17,20 +17,14 @@ namespace WebformMealPlanner.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+            return View(_repository.GetDefaultEngineViewModel());
 		}
 
-		[HttpPost]
-		public JsonResult GetMealPlan()
-		{
-			return Json( _repository.GetMealPlanViewModel() );
-		}
-
-		[HttpPost]
-		public JsonResult GetMealOptions()
-		{
-			return Json( _repository.GetMealOptionsViewModel() );
-		}
+        [HttpPost]
+        public JsonResult GetIndexViewModel()
+        {
+            return Json(_repository.GetIndexViewModel());
+        }
 
 		[HttpPost]
 		public JsonResult AddMealPlanDay( MealPlanDayPersistModel day )
@@ -44,6 +38,12 @@ namespace WebformMealPlanner.Controllers
 			return Json( _repository.AddMealOption( mealOption ) );
 		}
 
+        [HttpPost]
+        public JsonResult SetMealPlannerConfiguration(MealPlannerConfigurationViewPersistModel configuration)
+        {
+            return Json(_repository.SetMealPlannerConfiguration(configuration));
+        }
+
 		[HttpPost]
 		public JsonResult RemoveMealPlanDay( JavascriptDateTime day )
 		{
@@ -55,6 +55,14 @@ namespace WebformMealPlanner.Controllers
 		{
 			return Json( _repository.RemoveMealOption( name ) );
 		}
+
+        [HttpPost]
+        public EmptyResult SetDefaultEngineConfiguration(DefaultEngineViewPersistModel configuration)
+        {
+            _repository.SetDefaultEngineConfiguration(configuration);
+
+            return new EmptyResult();
+        }
 
 		private MealPlannerRepository _repository;
 	}

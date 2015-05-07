@@ -1,4 +1,4 @@
-﻿@model WebformMealPlanner.Models.MealPlannerModel
+﻿@model WebformMealPlanner.Models.DefaultEngineViewPersistModel
 
 @using System.Web.Script.Serialization;
 @using System.Web.Mvc;
@@ -18,7 +18,11 @@
     <script type="text/javascript" src="~/Widgets/MealPlanner/MealPlan.js"></script>
     <script type="text/javascript" src="~/Widgets/MealPlanner/MealOptions.js"></script>
     <script type="text/javascript">
-        $('document').ready(function() {
+        $('document').ready(function () {
+            angular.module("MealPlanner").value('DefaultEngineData', {
+                HostName: "@Model.HostName",
+                Port: "@Model.Port"
+            });
             angular.bootstrap($("#controller-div"), ["MealPlanner"]);
         });
     </script>
@@ -53,4 +57,9 @@
     <div ng-show="mode=='MealOptions'">
         <meal-options data="mealOptions"></meal-options>
     </div>
+    <div ng-show="mode=='Config''">
+        <meal-planner-configuration data="mealPlannerConfiguration" default-engine-port="defaultEnginePort"></meal-planner-configuration>
+    </div>
+
+    <div ng-show="initialized==false" class="alert alert-danger" role="alert">Unable to initialize. Is the engine address correct? Is the engine on? All this and more in the Event Log.</div>
 </div>
