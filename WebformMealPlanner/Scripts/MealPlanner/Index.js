@@ -3,9 +3,12 @@
 		.controller("MealPlannerController", ["$scope", "$http", function($scope, $http) {
 			$scope.mealPlan = {};
 			$scope.mealOptions = { MealOptions: [] };
+			$scope.mealPlannerConfiguration = {};
 			$scope.mode = 'MealPlan'; //MealPlan, MealOptions, Config
 			$scope.calendarDays = [];
 			$scope.selectedDay = null;
+
+			$scope.initialized = false;
 
 			$scope.$on('AddMealPlanDay', function(event, args) {
 				$http.post('MealPlanner/AddMealPlanDay', {
@@ -53,6 +56,24 @@
 				});
 			});
 
+			$scope.$on('SetMealPlannerConfiguration', function (event, args) {
+			    $http.post('MealPlanner/SetMealPlannerConfiguration', {
+                    configuration: args
+			    })
+                .success(function (response) {
+                    $scope.Initialize();
+                });
+			});
+
+			$scope.$on('SetDefaultEngineConfiguration', function (event, args) {
+			    $http.post('MealPlanner/SetDefaultEngineConfiguration', {
+                    configuration: args
+			    })
+                .success(function (response) {
+
+                })
+			});
+
 			$scope.$on('SetCalendarDates', function(event, args) {
 				var firstDate = args.FirstDate;
 				var lastDate = args.LastDate;
@@ -92,29 +113,19 @@
 				}
 			});
 
-			$scope.GetMealPlan = function() {
-				$http.post('MealPlanner/GetMealPlan')
-				.success(function(response) {
-					$scope.mealPlan = response;
-					$scope.$broadcast('MealPlanUpdated');
-				})
-				.error(function(response) {
-					alert('There was a problem getting the meal plan from the server');
-				});
-			}
+			$scope.Initialize = function () {
+			    $http.post('MealPlanner/GetIndexViewModel')
+                .success(function (response) {
+                    $scope.mealPlan = response.MealPlan;
+                    $scope.mealOptions = response.MealOptions;
+                    $scope.mealPlannerConfiguration = response.mealPlannerConfiguration;
+                    $scope.initialized = true;
 
-			$scope.GetMealOptions = function() {
-				$http.post('MealPlanner/GetMealOptions')
-				.success(function(response) {
-					$scope.mealOptions = response;
-				})
-				.error(function(response) {
-					alert('There was a problem getting the meal options from the server');
-				});
-			}
+                    $scope.$broadcast('MealPlanUpdated');
+                });
+			};
 
-			$scope.GetMealPlan();
-			$scope.GetMealOptions();
+			$scope.Initialize();
 
 			function simpleDateLTE(date1, date2) {
 				if (date1.getFullYear() < date2.getFullYear())	return true;

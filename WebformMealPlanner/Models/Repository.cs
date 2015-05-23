@@ -8,10 +8,10 @@ using MealPlanner.Library;
 
 namespace WebformMealPlanner.Models
 {
-	public class MealPlannerRepository
-	{
-		public MealPlannerRepository()
-		{
+    public class MealPlannerRepository
+    {
+        public MealPlannerRepository()
+        {
 			_eventLog = new EventLog();
 			if ( !EventLog.SourceExists( "Web Source" ) )
 			{
@@ -24,133 +24,196 @@ namespace WebformMealPlanner.Models
 			_currentMealOptions = new MealPlannerEngineServiceChannel( _eventLog ).GetMealOptions();
 			_currentConfiguration = new MealPlannerEngineServiceChannel( _eventLog ).GetConfiguration();
 
-			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
-		}
+            _defaultEngineConfiguration = new Serializer().GetConfiguration();
 
-		public MealPlanViewModel GetMealPlanViewModel()
-		{
-			return MealPlanToViewModel( _currentMealPlan );
-		}
+            _currentMealPlan.MealPlanDays.Sort(new MealPlanDaysByDateComparer());
+        }
 
-		public MealOptionsViewModel GetMealOptionsViewModel()
-		{
-			return MealOptionsToViewModel( _currentMealOptions );
-		}
+        public DefaultEngineViewPersistModel GetDefaultEngineViewModel()
+        {
+            return MealPlannerConfigurationToDefaultEngineViewMOdel(_defaultEngineConfiguration);
+        }
 
-		public MealPlanViewModel AddMealPlanDay( MealPlanDayPersistModel day )
-		{
-			RemoveMealPlanDayFromMealPlan( day.Day );
+        public IndexViewModel GetIndexViewModel()
+        {
+            return new IndexViewModel
+            {
+                MealPlan = MealPlanToViewModel(_currentMealPlan),
+                MealOptions = MealOptionsToViewModel(_currentMealOptions),
+                MealPlannerConfiguration = MealPlannerConfigurationToViewModel(_currentConfiguration)
+            };
+        }
 
-			var mealPlanDay = new MealPlanDay();
-			mealPlanDay.Breakfast = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.BreakfastName ) ).FirstOrDefault();
-			mealPlanDay.Lunch = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.LunchName ) ).FirstOrDefault();
-			mealPlanDay.Dinner = _currentMealOptions.Where( mo => String.Equals( mo.Name, day.DinnerName ) ).FirstOrDefault();
-			mealPlanDay.Day = day.Day.ToDateTime();
+        public MealPlanViewModel AddMealPlanDay(MealPlanDayPersistModel day)
+        {
+            RemoveMealPlanDayFromMealPlan(day.Day);
 
-			_currentMealPlan.MealPlanDays.Add( mealPlanDay );
+            var mealPlanDay = new MealPlanDay();
+            mealPlanDay.Breakfast = _currentMealOptions.Where(mo => String.Equals(mo.Name, day.BreakfastName)).FirstOrDefault();
+            mealPlanDay.Lunch = _currentMealOptions.Where(mo => String.Equals(mo.Name, day.LunchName)).FirstOrDefault();
+            mealPlanDay.Dinner = _currentMealOptions.Where(mo => String.Equals(mo.Name, day.DinnerName)).FirstOrDefault();
+            mealPlanDay.Day = day.Day.ToDateTime();
 
-			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
+            _currentMealPlan.MealPlanDays.Add(mealPlanDay);
 
-			new Serializer().SetMealPlan( _currentMealPlan );
+            _currentMealPlan.MealPlanDays.Sort(new MealPlanDaysByDateComparer());
 
-			return MealPlanToViewModel( _currentMealPlan );
-		}
+            new Serializer().SetMealPlan(_currentMealPlan);
 
-		public MealOptionsViewModel AddMealOption( MealOptionViewPersistModel mealOption )
-		{
-			mealOption.KeyIngredients = mealOption.KeyIngredients ?? new string[ 0 ];
+            return MealPlanToViewModel(_currentMealPlan);
+        }
 
-			var newMealOption = new MealOption();
-			newMealOption.Name = mealOption.Name;
-			newMealOption.KeyIngredients = mealOption.KeyIngredients.ToList();
+        public MealOptionsViewModel AddMealOption(MealOptionViewPersistModel mealOption)
+        {
+            mealOption.KeyIngredients = mealOption.KeyIngredients ?? new string[0];
 
-			_currentMealOptions.Add( newMealOption );
+            var newMealOption = new MealOption();
+            newMealOption.Name = mealOption.Name;
+            newMealOption.KeyIngredients = mealOption.KeyIngredients.ToList();
 
-			new Serializer().SetMealOptions( _currentMealOptions );
+            _currentMealOptions.Add(newMealOption);
 
-			return MealOptionsToViewModel( _currentMealOptions );
-		}
 
-		public MealPlanViewModel RemoveMealPlanDay( JavascriptDateTime day )
-		{
-			RemoveMealPlanDayFromMealPlan( day );
+            return MealOptionsToViewModel(_currentMealOptions);
+        }
 
-			return MealPlanToViewModel( _currentMealPlan );
-		}
+        public MealPlanViewModel RemoveMealPlanDay(JavascriptDateTime day)
+        {
+            RemoveMealPlanDayFromMealPlan(day);
 
-		public MealOptionsViewModel RemoveMealOption( string name )
-		{
-			var mealOption = _currentMealOptions.Where( o => o.Name == name ).FirstOrDefault();
+            return MealPlanToViewModel(_currentMealPlan);
+        }
 
-			if ( mealOption != null )
-			{
-				_currentMealOptions.Remove( mealOption );
-				new Serializer().SetMealOptions( _currentMealOptions );
-			}
+        public MealOptionsViewModel RemoveMealOption(string name)
+        {
+            var mealOption = _currentMealOptions.Where(o => o.Name == name).FirstOrDefault();
 
-			return MealOptionsToViewModel( _currentMealOptions );
-		}
+            if (mealOption != null)
+            {
+                _currentMealOptions.Remove(mealOption);
+                new Serializer().SetMealOptions(_currentMealOptions);
+            }
 
-		private MealPlanViewModel MealPlanToViewModel( MealPlan mealPlan )
-		{
-			var viewModel = new MealPlanViewModel();
+            return MealOptionsToViewModel(_currentMealOptions);
+        }
 
-			viewModel.MealPlanDays = mealPlan.MealPlanDays.Select( d =>
-			{
-				return new MealPlanDayViewModel()
-				{
-					Breakfast = MealOptionToViewModel( d.Breakfast ),
-					Lunch = MealOptionToViewModel( d.Lunch ),
-					Dinner = MealOptionToViewModel( d.Dinner ),
-					Day = new JavascriptDateTime( d.Day )
-				};
-			} ).ToArray();
+        public MealPlannerConfigurationViewPersistModel SetMealPlannerConfiguration(MealPlannerConfigurationViewPersistModel persistModel)
+        {
+            _currentConfiguration.EngineService = _currentConfiguration.EngineService ?? new MealPlannerServiceConfiguration();
+            _currentConfiguration.WebService = _currentConfiguration.WebService ?? new MealPlannerServiceConfiguration();
+            _currentConfiguration.NotifyIconService = _currentConfiguration.NotifyIconService ?? new MealPlannerServiceConfiguration();
 
-			return viewModel;
-		}
+            _currentConfiguration.EngineService.HostName = persistModel.EngineServiceHostName ?? _currentConfiguration.EngineService.HostName;
+            _currentConfiguration.EngineService.Port = persistModel.EngineServicePort ?? _currentConfiguration.EngineService.Port;
 
-		private MealOptionsViewModel MealOptionsToViewModel( List<MealOption> mealOptions )
-		{
-			var viewModel = new MealOptionsViewModel();
+            _currentConfiguration.WebService.HostName = persistModel.WebServiceHostName ?? _currentConfiguration.WebService.HostName;
+            _currentConfiguration.WebService.Port = persistModel.WebServicePort ?? _currentConfiguration.WebService.Port;
 
-			viewModel.MealOptions = mealOptions.Select( MealOptionToViewModel ).ToArray();
+            _currentConfiguration.NotifyIconService.HostName = persistModel.NotifyIconServiceHostName ?? _currentConfiguration.NotifyIconService.HostName;
+            _currentConfiguration.NotifyIconService.Port = persistModel.NotifyIconServicePort ?? _currentConfiguration.NotifyIconService.Port;
 
-			return viewModel;
-		}
+            _currentConfiguration.DaysToPlan = persistModel.DaysToPlan != -1 ? persistModel.DaysToPlan : _currentConfiguration.DaysToPlan;
+            _currentConfiguration.ShoppingDaysNeeded = persistModel.ShoppingDaysNeeded != -1 ? persistModel.ShoppingDaysNeeded : _currentConfiguration.ShoppingDaysNeeded;
 
-		private MealOptionViewPersistModel MealOptionToViewModel( MealOption option )
-		{
-			if ( option == null )
-			{
-				return new MealOptionViewPersistModel
-				{
-					Name = "<No name>",
-					KeyIngredients = new string[ 0 ]
-				};
-			}
+            new Serializer().SetConfiguration(_currentConfiguration);
 
-			return new MealOptionViewPersistModel
-			{
-				Name = option.Name,
-				KeyIngredients = option.KeyIngredients.ToArray()
-			};
-		}
+            return MealPlannerConfigurationToViewModel(_currentConfiguration);
+        }
 
-		private void RemoveMealPlanDayFromMealPlan( JavascriptDateTime day )
-		{
-			var mealPlanDay = _currentMealPlan.MealPlanDays.Where( d => day.ToDateTime() == d.Day ).FirstOrDefault();
+        public void SetDefaultEngineConfiguration(DefaultEngineViewPersistModel configuration)
+        {
+            _defaultEngineConfiguration.EngineService.HostName = configuration.HostName;
+            _defaultEngineConfiguration.EngineService.Port = configuration.Port;
+            new Serializer().SetConfiguration(_defaultEngineConfiguration);
+        }
 
-			if ( mealPlanDay != null )
-			{
-				_currentMealPlan.MealPlanDays.Remove( mealPlanDay );
-				new Serializer().SetMealPlan( _currentMealPlan );
-			}
-		}
+        private MealPlanViewModel MealPlanToViewModel(MealPlan mealPlan)
+        {
+            var viewModel = new MealPlanViewModel();
 
-		private MealPlan _currentMealPlan;
-		private List<MealOption> _currentMealOptions;
-		private MealPlannerConfiguration _currentConfiguration;
-		private string _processAddress;
+            viewModel.MealPlanDays = mealPlan.MealPlanDays.Select(d =>
+            {
+                return new MealPlanDayViewModel()
+                {
+                    Breakfast = MealOptionToViewModel(d.Breakfast),
+                    Lunch = MealOptionToViewModel(d.Lunch),
+                    Dinner = MealOptionToViewModel(d.Dinner),
+                    Day = new JavascriptDateTime(d.Day)
+                };
+            }).ToArray();
+
+            return viewModel;
+        }
+
+        private MealOptionsViewModel MealOptionsToViewModel(List<MealOption> mealOptions)
+        {
+            var viewModel = new MealOptionsViewModel();
+
+            viewModel.MealOptions = mealOptions.Select(MealOptionToViewModel).ToArray();
+
+            return viewModel;
+        }
+
+        private MealOptionViewPersistModel MealOptionToViewModel(MealOption option)
+        {
+            if (option == null)
+            {
+                return new MealOptionViewPersistModel
+                {
+                    Name = "<No name>",
+                    KeyIngredients = new string[0]
+                };
+            }
+
+            return new MealOptionViewPersistModel
+            {
+                Name = option.Name,
+                KeyIngredients = option.KeyIngredients.ToArray()
+            };
+        }
+
+        private MealPlannerConfigurationViewPersistModel MealPlannerConfigurationToViewModel(MealPlannerConfiguration configuration)
+        {
+            return new MealPlannerConfigurationViewPersistModel
+            {
+                EngineServiceHostName = configuration.EngineService.HostName,
+                EngineServicePort = configuration.EngineService.Port,
+
+                WebServiceHostName = configuration.WebService.HostName,
+                WebServicePort = configuration.WebService.Port,
+
+                NotifyIconServiceHostName = configuration.NotifyIconService.HostName,
+                NotifyIconServicePort = configuration.NotifyIconService.Port,
+
+                DaysToPlan = configuration.DaysToPlan,
+                ShoppingDaysNeeded = configuration.ShoppingDaysNeeded
+            };
+        }
+
+        private DefaultEngineViewPersistModel MealPlannerConfigurationToDefaultEngineViewMOdel(MealPlannerConfiguration configuration)
+        {
+            return new DefaultEngineViewPersistModel
+            {
+                HostName = configuration.EngineService.HostName,
+                Port = configuration.EngineService.Port
+            };
+        }
+
+        private void RemoveMealPlanDayFromMealPlan(JavascriptDateTime day)
+        {
+            var mealPlanDay = _currentMealPlan.MealPlanDays.Where(d => day.ToDateTime() == d.Day).FirstOrDefault();
+
+            if (mealPlanDay != null)
+            {
+                _currentMealPlan.MealPlanDays.Remove(mealPlanDay);
+                new Serializer().SetMealPlan(_currentMealPlan);
+            }
+        }
+
+        private MealPlan _currentMealPlan;
+        private List<MealOption> _currentMealOptions;
+        private MealPlannerConfiguration _currentConfiguration;
+        private MealPlannerConfiguration _defaultEngineConfiguration;
 		private EventLog _eventLog;
-	}
+    }
 }
