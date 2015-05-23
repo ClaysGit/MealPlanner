@@ -17,7 +17,10 @@ namespace NotifyIconMealPlanner
 		[STAThread]
 		static void Main()
 		{
-			_mealPlannerNotifyIcon = new MealPlannerNotifyIcon();
+			var config = new Serializer().GetConfiguration();
+			var serviceUri = String.Format( "http://{0}:{1}", config.NotifyIconService.HostName, config.NotifyIconService.Port );
+
+			_mealPlannerNotifyIcon = new MealPlannerNotifyIcon( serviceUri );
 			_notifyIconService = new NotifyIconService( _mealPlannerNotifyIcon );
 			_notifyIconServiceHost = ConfigureNotifyIconService( _notifyIconService );
 
@@ -28,8 +31,9 @@ namespace NotifyIconMealPlanner
 		private static WebServiceHost ConfigureNotifyIconService( INotifyIconService notifyIconService )
 		{
 			var config = new Serializer().GetConfiguration();
+			var serviceUri = String.Format( "http://{0}:{1}", config.NotifyIconService.HostName, config.NotifyIconService.Port );
 
-			Uri serviceAddress = new Uri( "http://localhost:17576" );
+			Uri serviceAddress = new Uri( serviceUri );
 			var notifyIconServiceHost = new WebServiceHost( notifyIconService, serviceAddress );
 
 			notifyIconServiceHost.Open();
