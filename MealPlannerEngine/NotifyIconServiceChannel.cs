@@ -14,15 +14,17 @@ namespace MealPlannerEngine
 	{
 		public NotifyIconServiceChannel( EventLog eventLog )
 		{
-			_baseAddress = new Uri( "http://localhost:17576" );
 			_eventLog = eventLog;
 		}
 
 		public void SendMealPlanDaysNeeded( int daysNeeded )
 		{
+			var serviceConfig = new Serializer().GetConfiguration().NotifyIconService;
+			var serviceAddress = String.Format( "http://{0}:{1}", serviceConfig.HostName, serviceConfig.Port );
+
 			try
 			{
-				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( serviceAddress ) )
 				{
 					INotifyIconService channel = cf.CreateChannel();
 
@@ -31,15 +33,18 @@ namespace MealPlannerEngine
 			}
 			catch ( Exception e )
 			{
-				_eventLog.WriteEntry( String.Format( "Exception in SendMealPlanDaysNeeded with daysNeeded '{0}'\n{1}", daysNeeded, e.Message ), EventLogEntryType.Error, 4 );
+				_eventLog.WriteEntry( String.Format( "Exception in SendMealPlanDaysNeeded with daysNeeded '{0}' sending to {1}\n{2}", daysNeeded, serviceAddress, e.Message ), EventLogEntryType.Error, 6 );
 			}
 		}
 
 		public void SendShoppingNeeded( int daysLeft )
 		{
+			var serviceConfig = new Serializer().GetConfiguration().NotifyIconService;
+			var serviceAddress = String.Format( "http://{0}:{1}", serviceConfig.HostName, serviceConfig.Port );
+
 			try
 			{
-				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( _baseAddress ) )
+				using ( WebChannelFactory<INotifyIconService> cf = new WebChannelFactory<INotifyIconService>( serviceAddress ) )
 				{
 					INotifyIconService channel = cf.CreateChannel();
 
@@ -48,11 +53,10 @@ namespace MealPlannerEngine
 			}
 			catch ( Exception e )
 			{
-				_eventLog.WriteEntry( String.Format( "Exception in SendShoppingNeeded with daysLeft '{0}'\n{1}", daysLeft, e.Message ), EventLogEntryType.Error, 5 );
+				_eventLog.WriteEntry( String.Format( "Exception in SendShoppingNeeded with daysLeft '{0}' sending to {1}\n{2}", daysLeft, serviceAddress, e.Message ), EventLogEntryType.Error, 7 );
 			}
 		}
 
-		private Uri _baseAddress;
 		private EventLog _eventLog;
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -11,10 +12,17 @@ namespace WebformMealPlanner.Models
 	{
 		public MealPlannerRepository()
 		{
-			_processAddress = "";
-			_currentMealPlan = new MealPlannerEngineServiceChannel( _processAddress ).GetMealPlan();
-			_currentMealOptions = new MealPlannerEngineServiceChannel( _processAddress ).GetMealOptions();
-			_currentConfiguration = new MealPlannerEngineServiceChannel( _processAddress ).GetConfiguration();
+			_eventLog = new EventLog();
+			if ( !EventLog.SourceExists( "Web Source" ) )
+			{
+				EventLog.CreateEventSource( "Web Source", "MealPlannerLog" );
+			}
+			_eventLog.Source = "Web Source";
+			_eventLog.Log = "MealPlannerLog";
+
+			_currentMealPlan = new MealPlannerEngineServiceChannel( _eventLog ).GetMealPlan();
+			_currentMealOptions = new MealPlannerEngineServiceChannel( _eventLog ).GetMealOptions();
+			_currentConfiguration = new MealPlannerEngineServiceChannel( _eventLog ).GetConfiguration();
 
 			_currentMealPlan.MealPlanDays.Sort( new MealPlanDaysByDateComparer() );
 		}
@@ -94,7 +102,7 @@ namespace WebformMealPlanner.Models
 					Breakfast = MealOptionToViewModel( d.Breakfast ),
 					Lunch = MealOptionToViewModel( d.Lunch ),
 					Dinner = MealOptionToViewModel( d.Dinner ),
-					Day = new JavascriptDateTime(d.Day)
+					Day = new JavascriptDateTime( d.Day )
 				};
 			} ).ToArray();
 
@@ -143,5 +151,6 @@ namespace WebformMealPlanner.Models
 		private List<MealOption> _currentMealOptions;
 		private MealPlannerConfiguration _currentConfiguration;
 		private string _processAddress;
+		private EventLog _eventLog;
 	}
 }
